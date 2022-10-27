@@ -1,12 +1,18 @@
 <template>
   <div>
-    <logo />
-    <NuxtLink to="/character">
-      <div class="">
-        <navigator id="character_page" ref="character"/>
-        <navigator id="weapons_page" ref="weapons"/>
+    <div class="index">
+      <logo />
+      <div class="flex justify-center">
+        <NuxtLink to="/character">
+          <navigator id="characters_page" ref="characters" />
+        </NuxtLink>
+        <navigator id="weapons_page" ref="weapons" />
+        <navigator id="items_page" ref="items" />
       </div>
-    </NuxtLink>
+    </div>
+    <div>
+      <backgroundCloud />
+    </div>
   </div>
 </template>
 
@@ -16,13 +22,19 @@ import Vue from 'vue'
 export default Vue.extend({
   name: 'IndexPage',
   mounted() {
-        this.onWindowLoad()
+    this.onWindowLoad()
+  },
+  methods: {
+    onWindowLoad: function() {
+      var refs = this.$refs;
+      Object.keys(refs).forEach((el) => {
+        (refs[el] as Vue).$el.querySelector('.maxwidth')!.setAttribute("src", this.getImgUrl(el+'_off.png'))
+      });
     },
-    methods: {
-        onWindowLoad() {
-            console.log(this.$refs);
-        },
-    },
+    getImgUrl : function(pic : string) {
+      return require('../assets/img/icons/'+pic)
+  }
+  },
 })
 
 </script>
