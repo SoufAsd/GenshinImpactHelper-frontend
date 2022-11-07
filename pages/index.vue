@@ -3,7 +3,7 @@
     <div class="index">
       <logo />
       <div class="flex justify-center">
-        <NuxtLink to="/character">
+        <NuxtLink to="/characters">
           <navigator id="characters_page" ref="characters" />
         </NuxtLink>
         <navigator id="weapons_page" ref="weapons" />

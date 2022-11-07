@@ -1,11 +1,15 @@
 <template>
   <div>
     <div class="nav flex justify-around flex-row">
-      <div ref="left-nav" @mouseover="mouseOver" @mouseout="mouseOut" class="navbar-single-nav md:basis-1/3 right-hover">
+      
+      <div ref="left-nav" @click="removeBackground" @mouseover="mouseOver" @mouseout="mouseOut" class="navbar-single-nav md:basis-1/3 right-hover">
+        <NuxtLink to="/characters">
         <a class="flex justify-center pt-8 sm:pt-0" target="_blank">
           <img class="single-nav" src="~/assets/img/icons/characters_off.png" />
         </a>
+      </NuxtLink>
       </div>
+   
       <div ref="middle-nav" @mouseover="mouseOver" @mouseout="mouseOut" class="navbar-single-nav md:basis-1/3">
         <a class="flex justify-center pt-8 sm:pt-0" target="_blank">
           <img class="single-nav" src="~/assets/img/icons/weapons_off.png" />
@@ -84,6 +88,9 @@ export default {
     },
     getImgUrl: function (pic) {
       return require('../assets/img/icons/' + pic)
+    },
+    removeBackground:function(){
+      document.querySelector("body").style.removeProperty('background')
     }
   }
 }
