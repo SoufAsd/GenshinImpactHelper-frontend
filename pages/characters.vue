@@ -1,5 +1,5 @@
 <template>
-    <div class="feed-in grid grid-cols-5 gap-4 place-items-center pt-6 m-auto">
+    <div class="feed-in grid grid-cols-5 gap-4 place-items-center pt-6 m-auto scroll-smooth hover:scroll-auto">
         <div v-for="character of characters">
             <NuxtLink :to="`/character/${character.name}`">
                 <CardForm :character="character" />

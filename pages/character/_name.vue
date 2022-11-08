@@ -8,7 +8,7 @@
 </template>
 <script>
 export default {
-    layout: 'navbar',
+    layout: 'sidebar',
     data: () => ({
         mycharacter: Array
     }),

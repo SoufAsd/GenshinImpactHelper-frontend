@@ -1,7 +1,7 @@
 <template>
   <div class="background-character">
     <div class="grid content-center">
-      <div><img class="md:max-h-xl" style="max-height: 37rem;" ref="image_character" :src="image" alt="" sizes="" srcset=""></div>
+      <div><img class="md:max-h-xl animate-pulse" style="max-height: 37rem;" ref="image_character" :src="image" alt="" sizes="" srcset=""></div>
     </div>
     <Nuxt />
   </div>

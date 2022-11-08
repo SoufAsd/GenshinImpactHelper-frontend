@@ -5,12 +5,14 @@
 :root {
 	--cloud-color: #f3f2f2;
 	--black-color:#125286;
+	--font-primary: 'Raleway', sans-serif;
 }
 
 body {
 	background: linear-gradient(95deg, #006fad 0%, #27bae8 100%);
 	font-family: "Poppins", sans-serif;
 	overflow-x: hidden;
+	font-family: var(--font-primary);
 }
 
 .background {
