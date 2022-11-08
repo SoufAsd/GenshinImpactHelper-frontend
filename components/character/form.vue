@@ -1,7 +1,7 @@
 <template>
   <div class="background-character">
     <div class="grid content-center">
-      <div><img ref="image_character" :src="image" alt="" sizes="" srcset=""></div>
+      <div><img class="md:max-h-xl" style="max-height: 37rem;" ref="image_character" :src="image" alt="" sizes="" srcset=""></div>
     </div>
     <Nuxt />
   </div>
@@ -25,9 +25,8 @@ export default {
   },
   watch: {
     actualCharacter(oldVal, newVal) {
-      this.getColors(this.actualCharacter.image);
-      this.image = this.actualCharacter.image
-      console.log(this.image)
+      this.getColors(this.actualCharacter[0].image);
+      this.image = this.actualCharacter[0].image
     }
   },
   methods: {

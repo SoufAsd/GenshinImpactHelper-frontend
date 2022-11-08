@@ -15,8 +15,14 @@ export default {
         characters: []
     }),
     async fetch() {
+        if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+            var url = 'http://localhost:4000/character';
+        }else{
+            var url = 'https://genshin-api-2idd.onrender.com/character';
+        }
+            
         this.characters = await fetch(
-            'http://localhost:4000/character'
+            url
         ).then(res => res.json())
         // var allcharacters = await fetch(
         //     'https://api.genshin.dev/characters'
