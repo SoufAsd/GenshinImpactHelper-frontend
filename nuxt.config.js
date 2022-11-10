@@ -27,7 +27,8 @@ export default {
   css: [
     '~/assets/css/main.css',
     '~/assets/css/navigator.css',
-    '~/assets/css/sidebar.css'
+    '~/assets/css/sidebar.css',
+    '~/assets/css/background.css',
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
