@@ -1,7 +1,9 @@
 <template>
   <div class="background-character">
     <div class="grid content-center">
-      <div><img class="md:max-h-xl animate-pulse" style="max-height: 37rem;" ref="image_character" :src="image" alt="" sizes="" srcset=""></div>
+      <div class="character-img"><img class="md:max-h-xl animate-pulse" style="max-height: 37rem;" ref="image_character"
+          :src="image" alt="" sizes="" srcset=""></div>
+      <ModalCharacter :modaltype="this.modaltype"></ModalCharacter>
     </div>
     <Nuxt />
   </div>
@@ -10,11 +12,13 @@
 import * as Vibrant from 'node-vibrant'
 export default {
   props: {
-    actualCharacter: []
+    actualCharacter: [],
   },
   data() {
     return {
-      image : ""
+      image: "",
+      infos: {},
+      modaltype : "",
     }
   },
   mounted() {
@@ -27,6 +31,14 @@ export default {
     actualCharacter(oldVal, newVal) {
       this.getColors(this.actualCharacter[0].image);
       this.image = this.actualCharacter[0].image
+      this.infos = { 
+        "description": this.actualCharacter[0].description,
+        "name": this.actualCharacter[0].name,
+        "nation": this.actualCharacter[0].nation,
+        "birthday": this.actualCharacter[0].birthday,
+        "title": this.actualCharacter[0].title,
+        "vision": this.actualCharacter[0].vision,
+      }
     }
   },
   methods: {
@@ -39,7 +51,7 @@ export default {
             colorsP.push(hex)
           }
           this.name = colorsP
-          document.querySelector('body').style.background = colorsP[colorsP.length-4]
+          document.querySelector('#background').style.background = colorsP[colorsP.length - 4]
         })
     }
   }

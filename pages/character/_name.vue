@@ -1,5 +1,6 @@
 <template>
-    <div class="flex justify-center">
+    <div id="background" class="flex justify-center h-screen w-full">
+        <backgroundCharacter />
         <div class="flex flex-col md:flex-row md:max-w-xl rounded-lg shadow-md" style="max-width: 47rem;max-height: 47rem;">
             <CharacterForm :actualCharacter="mycharacter"></CharacterForm>
             <!-- <CharacterInformations></CharacterInformations> -->
@@ -9,11 +10,12 @@
 <script>
 export default {
     layout: 'sidebar',
+    props:["nuxtChildKey"],
     data: () => ({
         mycharacter: Array
     }),
     mounted() {
-
+        console.log(this.nuxtChildKey)
     },
     async fetch() {
         if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
