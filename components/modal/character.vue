@@ -1,9 +1,8 @@
 <template>
     <div>
-        <div id="modal-container">
+        <div id="modal-container" ref="modal">
             <div class="modal-background">
                 <div class="modal">
-                    <h2>{{ this.modaltype }}</h2>
                     <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
                         preserveAspectRatio="none">
                         <rect x="0" y="0" fill="none" width="100%" height="100%" rx="3" ry="3"></rect>
@@ -15,7 +14,7 @@
     </div>
 </template>
 <!--  -->
-<style>
+<style scoped>
 #modal-container {
     display: table;
     height: 100%;
@@ -217,12 +216,34 @@
 <script>
 export default {
     props: {
-        modaltype: String
-    },
-    watch: {
-        modaltype(oldVal, newVal) {
-            // console.log(this.modaltype)
+        modaltypekey: {
+            type: String
         }
+    },
+    data() {
+        return {
+            type: ""
+        }
+    },
+    mounted() {
+        let modal = this.$refs.modal
+        modal.classList.add("open")
+    },
+    beforeUnmount() {
+        if (document.querySelector(".active")) {
+            if (modal.classList.contains("out")) {
+                modal.classList.remove("out")
+                modal.classList.add("open")
+            } else {
+                modal.classList.add("out")
+                setTimeout(function () {
+                    modal.classList.remove("out")
+                }, 500);
+            }
+        }
+    },
+    created() {
+        console.log(this.modaltypekey)
     }
 }
 </script>

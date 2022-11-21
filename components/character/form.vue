@@ -1,11 +1,10 @@
 <template>
   <div class="background-character">
     <div class="grid content-center">
-      <div class="character-img"><img class="md:max-h-xl animate-pulse" style="max-height: 37rem;" ref="image_character"
+      <div v-if="modaltype == ''" class="character-img"><img class="md:max-h-xl animate-pulse" style="max-height: 37rem;" ref="image_character"
           :src="image" alt="" sizes="" srcset=""></div>
-      <ModalCharacter :modaltype="this.modaltype"></ModalCharacter>
+      <ModalCharacter v-else :modaltypekey="modaltype"></ModalCharacter>
     </div>
-    <Nuxt />
   </div>
 </template>
 <script>
@@ -13,6 +12,9 @@ import * as Vibrant from 'node-vibrant'
 export default {
   props: {
     actualCharacter: [],
+    type :{
+      type : String
+    }
   },
   data() {
     return {
@@ -21,11 +23,8 @@ export default {
       modaltype : "",
     }
   },
-  mounted() {
-    // const colorThief = new ColorThief()
-    //  document.querySelector('body').style.backgroundColor
-    // Vibrant.from(this.actualCharacter.image).getPalette()
-    //         .then((palette) => console.log(palette))
+  updated() {
+    this.modaltype = this.type
   },
   watch: {
     actualCharacter(oldVal, newVal) {

@@ -2,7 +2,7 @@
     <div id="background" class="flex justify-center h-screen w-full">
         <backgroundCharacter />
         <div class="flex flex-col md:flex-row md:max-w-xl rounded-lg shadow-md" style="max-width: 47rem;max-height: 47rem;">
-            <CharacterForm :actualCharacter="mycharacter"></CharacterForm>
+            <CharacterForm :actualCharacter="mycharacter" :type="key"></CharacterForm>
             <!-- <CharacterInformations></CharacterInformations> -->
         </div>
     </div>
@@ -12,10 +12,15 @@ export default {
     layout: 'sidebar',
     props:["nuxtChildKey"],
     data: () => ({
-        mycharacter: Array
+        mycharacter: Array,
+        key : ""
     }),
-    mounted() {
-        console.log(this.nuxtChildKey)
+    // created(){
+    //     console.log(this.nuxtChildKey)
+    //     console.log(this.$el)
+    // },
+    mounted(){
+        this.key = this.nuxtChildKey
     },
     async fetch() {
         if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {

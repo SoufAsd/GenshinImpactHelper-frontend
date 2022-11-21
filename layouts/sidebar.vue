@@ -30,7 +30,7 @@
                 <div @click="openmodel" class="switcher rounded-lg drop-shadow-lg" data-value="Soon">!</div>
             </div>
         </nav>
-        <Nuxt :nuxt-child-key="modaltype"/>
+        <Nuxt :nuxt-child-key="modaltype" />
     </div>
 </template>
 <script>
@@ -47,25 +47,26 @@ export default {
     },
     methods: {
         openmodel: function (e) {
-            var modal = document.querySelector("#modal-container")
+            // var modal = document.querySelector("#modal-container")
+            this.modaltype = e.target.getAttribute("data-value")
+            // document.querySelector("#modal-container").setAttribute("data-value",this.modaltype)
             if (document.querySelector(".active")) {
                 document.querySelector(".active").classList.remove("active")
                 e.target.classList.add("active")
-                if (modal.classList.contains("out")) {
-                    modal.classList.remove("out")
-                    modal.classList.add("open")
-                } else {
-                    modal.classList.add("out")
-                    setTimeout(function () {
-                        modal.classList.remove("out")
-                    }, 500);
-                }
+                // if (modal.classList.contains("out")) {
+                //     modal.classList.remove("out")
+                //     modal.classList.add("open")
+                // } else {
+                //     modal.classList.add("out")
+                //     setTimeout(function () {
+                //         modal.classList.remove("out")
+                //     }, 500);
+                // }
             } else {
                 e.target.classList.add("active")
                 document.querySelector(".character-img").classList.add("fadeout-img")
-                modal.classList.add("open")
+                // modal.classList.add("open")
             }
-
         },
     }
 }
