@@ -1,5 +1,5 @@
 <template>
-    <div id="background" class="flex justify-center h-screen w-full">
+    <div>
         <backgroundCharacter />
         <div class="flex flex-col md:flex-row md:max-w-xl rounded-lg shadow-md" style="max-width: 47rem;max-height: 47rem;">
             <CharacterForm :actualCharacter="mycharacter" :type="key"></CharacterForm>
@@ -15,10 +15,6 @@ export default {
         mycharacter: Array,
         key : ""
     }),
-    // created(){
-    //     console.log(this.nuxtChildKey)
-    //     console.log(this.$el)
-    // },
     mounted(){
         this.key = this.nuxtChildKey
     },

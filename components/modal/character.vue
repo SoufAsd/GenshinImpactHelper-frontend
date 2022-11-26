@@ -3,6 +3,9 @@
         <div id="modal-container" ref="modal">
             <div class="modal-background">
                 <div class="modal">
+                    <div class="modal-content">
+                        <NuxtDynamic :component="'Character'+modaltypekey" :title="modaltypekey" :data-character="dataCharacter"/>
+                    </div>
                     <svg class="modal-svg" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
                         preserveAspectRatio="none">
                         <rect x="0" y="0" fill="none" width="100%" height="100%" rx="3" ry="3"></rect>
@@ -39,8 +42,7 @@
     animation: modalFadeIn 0.5s 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 
-#modal-container.open .modal-background .modal h2,
-#modal-container.open .modal-background .modal p {
+#modal-container.open .modal-background .modal .modal-content {
     opacity: 0;
     position: relative;
     animation: modalContentFadeIn 0.5s 1s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
@@ -218,6 +220,9 @@ export default {
     props: {
         modaltypekey: {
             type: String
+        },
+        dataCharacter : {
+            type : Object
         }
     },
     data() {
@@ -242,8 +247,5 @@ export default {
             }
         }
     },
-    created() {
-        console.log(this.modaltypekey)
-    }
 }
 </script>
